@@ -17,17 +17,21 @@
     <div class="content">
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-md-pull-4 col-lg-pull-4 publish-div"></div>
-            <table data-toggle="userLoginLogTable" data-url="listaaa"
-                   data-query-params="queryParams"
+            <table data-toggle="table"
+                   data-url="search"
                    data-pagination="true"
+                   data-side-pagination="server"
                    data-search="true"
-                   data-height="300">
+                   data-height="600"
+                   data-page-list="[15]"
+                   data-detail-view="false">
+                <thead>
                 <tr>
-                    <th data-field="username">用户名</th>
-                    <th data-field="nickname">昵称</th>
-                    <th data-field="loginDateTime">登录时间</th>
+                    <th data-field="username" data-align="center">用户名</th>
+                    <th data-field="nickname" data-align="center">昵称</th>
+                    <th data-field="loginDateTime" data-align="center">登录时间</th>
                 </tr>
-
+                </thead>
             </table>
         </div>
     </div>

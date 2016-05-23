@@ -1,6 +1,8 @@
 package com.wxy.web.rest.service;
 
 
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 
 import com.wxy.web.common.domain.UserLoginLog;
@@ -17,13 +19,23 @@ public interface UserLoginLogService {
 
 
   /**
+   * findAllCount.
+   *
+   * @return  Long
+   */
+  Long findAllCount();
+
+  //~ ------------------------------------------------------------------------------------------------------------------
+
+  /**
    * findByPage.
    *
-   * @param   pageNum  Integer
+   * @param   username  String
+   * @param   pageNum   Integer
    *
    * @return  Page
    */
-  Page<UserLoginLog> findByPage(Integer pageNum);
+  List<UserLoginLog> findByPage(String username, Integer pageNum);
 
   //~ ------------------------------------------------------------------------------------------------------------------
 
@@ -33,4 +45,4 @@ public interface UserLoginLogService {
    * @param  userLoginLog  UserLoginLog
    */
   void save(UserLoginLog userLoginLog);
-}
+} // end interface UserLoginLogService

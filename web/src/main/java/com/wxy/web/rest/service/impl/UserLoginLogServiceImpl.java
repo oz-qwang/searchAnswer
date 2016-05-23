@@ -1,13 +1,13 @@
 package com.wxy.web.rest.service.impl;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import java.util.List;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
 
 import com.wxy.web.common.domain.UserLoginLog;
+import com.wxy.web.common.repository.UserLoginLogCustomRespository;
 import com.wxy.web.common.repository.UserLoginLogRespository;
 import com.wxy.web.rest.service.UserLoginLogService;
 
@@ -21,23 +21,31 @@ import com.wxy.web.rest.service.UserLoginLogService;
 @Service public class UserLoginLogServiceImpl implements UserLoginLogService {
   //~ Static fields/initializers ---------------------------------------------------------------------------------------
 
-  private static final Integer PER_PAGE_SIZE = 10;
+  private static final Integer PER_PAGE_SIZE = 15;
 
   //~ Instance fields --------------------------------------------------------------------------------------------------
+
+  @Autowired private UserLoginLogCustomRespository userLoginLogCustomRespository;
 
   @Autowired private UserLoginLogRespository userLoginLogRespository;
 
   //~ Methods ----------------------------------------------------------------------------------------------------------
 
   /**
-   * findByPage.
-   *
-   * @param   pageNum  int
-   *
-   * @return  findByPage.
+   * @see  com.wxy.web.rest.service.UserLoginLogService#findAllCount()
    */
-  @Override public Page<UserLoginLog> findByPage(Integer pageNum) {
-    return userLoginLogRespository.findAll(new PageRequest(pageNum - 1, PER_PAGE_SIZE));
+  @Override public Long findAllCount() {
+    return userLoginLogRespository.count();
+  }
+
+  //~ ------------------------------------------------------------------------------------------------------------------
+
+  /**
+   * @see  com.wxy.web.rest.service.UserLoginLogService#findByPage(java.lang.String, java.lang.Integer)
+   */
+  @Override public List<UserLoginLog> findByPage(String username, Integer pageNum) {
+    return userLoginLogCustomRespository.findByUsernameForPage("%"+username+"%", (pageNum - 1) * PER_PAGE_SIZE,
+        pageNum * PER_PAGE_SIZE);
   }
 
   //~ ------------------------------------------------------------------------------------------------------------------
