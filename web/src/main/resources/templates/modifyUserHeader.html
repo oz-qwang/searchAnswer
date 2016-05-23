@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <head th:replace="base :: head">
+    </head>
+    <link th:href="@{/css/uploadify.css}" type="text/css" rel="stylesheet"/>
+    <script type="text/javascript" th:src="@{/js/build/jquery.uploadify-3.1.js}"></script>
+    <script type="text/javascript" th:src="@{/js/func/modifyUserHeader.js}"></script>
+</head>
+<body>
+<div class="container avatar-container">
+
+    <header class="header" th:replace="base :: header"></header>
+
+    <div class="content">
+        <div class="row">
+            <div th:replace="base :: userNavigator"></div>
+
+            <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-md-pull-4 col-lg-pull-4">
+                <div class="section">
+                    <h4>修改头像</h4>
+                    <div class="modal-body row clearfix">
+                        <div class="col-md-3 avatar-change-left">
+                            <div id="now-avatar">
+                                <img id="avatar" class=""
+                                     th:src="${userHeaderPath}!=null?@{${userHeaderPath}}:@{/img/default-avatar.png}"
+                                     width="100px" height="100px"/>
+
+                            </div>
+                            <div id="upload-avatar-btn">
+                                <input type="file" id="avatarUpload" class="btn btn-default btn-file" value="上传图片"/>
+                            </div>
+                        </div>
+                        <div class="col-md-9 avatar-change-right">
+                            <div class="imgchoose" style="display: none;">
+                                头像:<br/> <img src="" id="target" width="300px" height="300px;"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="base :: modal" id="modal"></div>
+
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-41774271-1', 'auto');
+    ga('send', 'pageview');
+</script>
+<script>
+    $("#nav-user").addClass('active').siblings().removeClass('active');
+    $('#p-avatar').addClass('active')
+</script>
+
+</body>
+</html>

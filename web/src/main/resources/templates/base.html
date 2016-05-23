@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta http-equiv="Cache-Control" content="no-transform"/>
+    <title>搜索问答</title>
+    <link rel="shortcut icon" href="../static/img/favicon.ico" th:href="@{/img/favicon.ico}"/>
+    <link href="../static/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
+    <link href="../static/css/main.css" rel="stylesheet" type="text/css" th:href="@{/css/main.css}"/>
+    <link href="../static/css/index.css" rel="stylesheet" type="text/css" th:href="@{/css/index.css}"/>
+    <link href="../static/css/detail.css" rel="stylesheet" type="text/css" th:href="@{/css/detail.css}"/>
+    <link href="../static/css/user.css" rel="stylesheet" type="text/css" th:href="@{/css/user.css}"/>
+    <link href="../static/css/announcement.css" rel="stylesheet" type="text/css" th:href="@{/css/announcement.css}"/>
+    <link href="../static/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css"
+          th:href="@{/css/bootstrap-datetimepicker.min.css}"/>
+
+    <!--[if lt IE 9]>
+    <script src="../static/js/build/html5shiv.min.js" th:src="@{/js/build/html5shiv.min.js}"></script>
+    <script src="../static/js/build/respond.min.js" th:src="@{/js/build/respond.min.js}"></script>
+    <![endif]-->
+
+    <script src="../static/js/build/ie10-viewport-bug-workaround.js"
+            th:src="@{/js/build/ie10-viewport-bug-workaround.js}"></script>
+
+    <script src="../static/js/build/jquery-2.2.3.min.js" th:src="@{/js/build/jquery-2.2.3.min.js}"></script>
+    <script src="../static/js/build/bootstrap.min.js" th:src="@{/js/build/bootstrap.min.js}"></script>
+    <script src="../static/js/build/validate.js" th:src="@{/js/build/validate.js}"></script>
+</head>
+<body>
+<header class="header" th:fragment="header">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="row">
+                <div class="hidden-xs hidden-sm col-md-3 col-lg-3">
+                    <div class="navbar-header navbar-left">
+                        <a class="navbar-brand-mc" href="/">
+                            <img th:src="@{/img/MiLogo.png}" alt="logo" width="40px" height="40px"/>搜索问答
+                        </a>
+                    </div>
+                </div>
+                <div class="col-xs-8 col-sm-5 col-md-5 col-lg-5">
+                    <!--<div class="navbar-search navbar-left">-->
+                    <form class="navbar-form-mc" method="get" th:action="@{/question/list}">
+                        <div class="input-group input-group-nav">
+                            <input type="text" class="form-control" id="input-search" name="title"
+                                   placeholder="查找问题..."/>
+                                <span class="input-group-btn">
+                                    <a id="questionSearchBtn" role="button" class="btn" aria-label="Left Align"
+                                       onclick="$(this).closest('form').submit();">
+                                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                                    </a>
+                                </span>
+                        </div>
+                    </form>
+                    <!--</div>-->
+                </div>
+                <div class="col-sm-5 col-md-4 col-lg-4">
+                    <div id="navbar" class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav pull-right">
+                            <li id="nav-course"><a th:href="@{/question/list}">首页</a></li>
+                            <li id="nav-notice"><a th:href="@{/notice/list}">公告</a></li>
+                            <li id="nav-user" class="dropdown">
+                                <a href="#user" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                   aria-haspopup="true" aria-expanded="false">个人 <span class="caret"></span></a>
+                                <ul class="dropdown-menu pull-right">
+                                    <li><a th:href="@{/user/info/userMain}">个人主页</a></li>
+                                    <li th:if='${#httpSession.getAttribute("isAdmin")==true}'><a
+                                            th:href="@{/notice/publish}">发布公告</a>
+                                    </li>
+                                    <li th:if='${#httpSession.getAttribute("isAdmin")==true}'>
+                                        <a th:href="@{/userLoginLog/list}">登录日志</a></li>
+                                    <li><a id="nav-messages" th:href="@{/question/publish}">我要提问</a></li>
+                                    <li><a th:href="@{/user/info/modifyBaseInfo}">资料设置</a></li>
+                                    <li><a class="logout" th:href="@{/logout}">退出登录</a></li>
+                                </ul>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-md-push-8 col-lg-push-8" th:fragment="userNavigator">
+    <div class="section">
+        <div class="list-group sidebar-nav">
+            <ul class="menu" id="profile-sidebar">
+                <li id="p-return">
+                    <a th:href="@{/user/info/userMain}">
+                        个人主页<span class="glyphicon glyphicon-share-alt"
+                                  aria-hidden="true"></span>
+                    </a>
+                </li>
+                <li id="p-basic"><a th:href="@{/user/info/modifyBaseInfo}">基本资料</a></li>
+                <li class="hidden-xs" id="p-avatar"><a th:href="@{/user/info/moidfyHeader}">修改头像</a></li>
+                <li id="p-account"><a th:href="@{/user/info/moidfyPassword}">修改密码</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" id="modal" th:fragment="modal">
+    <div class="modal-dialog modal-sm alert-danger">
+        <div class="modal-content">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                    aria-hidden="true">&times;</span></button>
+            <div class="modal-body">
+                <p id="modal-message"></p>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

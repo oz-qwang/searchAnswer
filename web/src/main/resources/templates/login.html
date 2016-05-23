@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <head th:replace="base :: head">
+    </head>
+    <link href="../static/css/customer/login.css" rel="stylesheet" type="text/css"
+          th:href="@{/css/customer/login.css}"/>
+    <script src="../static/js/func/login.js" th:src="@{/js/func/login.js}"></script>
+</head>
+<body class="body-login">
+
+<div class="home">
+    <div class="content div-content-login">
+
+        <div class="wrapper div-wrapper-login">
+            <div class="container">
+                <div class="row">
+                    <div class="wrapper-intro col-xs-0 col-sm-6 col-md-8 col-lg-8">
+                        <img src="../static/img/MiLogo.png" th:src="@{/img/MiLogo.png}"/>
+                        <br/>
+                        <h2>搜索问答</h2>
+                    </div>
+
+                    <!--<div class="wrapper-intro col-xs-0 col-sm-0 col-md-2 col-lg-2"></div>-->
+
+                    <div class="log-or-sign col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs" id="tab-sl">
+                            <li class="active"><a href="#login" aria-controls="login" role="tab" data-toggle="tab"
+                                                  id="tri-login">登录搜索问答</a></li>
+                            <li><a href="#register" aria-controls="register" role="tab" data-toggle="tab"
+                                   id="tri-register">注册·加入搜索问答</a></li>
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <!-- Tab Log in -->
+                            <form class="tab-pane fade in active" id="login" onsubmit="return false;">
+                                <div class="tab-info" id="login-info"></div>
+                                <label for="login-email" class="sr-only">用户名</label>
+                                <input type="text" id="login-email" class="form-control" placeholder="用户名"
+                                       required="required" autofocus="autofocus" name="username"/>
+                                <label for="login-password" class="sr-only">密码</label>
+                                <input type="password" id="login-password" class="form-control" placeholder="密码"
+                                       required="required" name="password"/>
+                                <div class="checkbox">
+                                    <label class="f-white">
+                                        <input type="checkbox" id="login-remember" checked="checked"/> 记住我
+                                    </label>
+                                    <a class="pull-right forgot" href="/recover">忘记密码</a>
+                                </div>
+                                <button class="btn btn-lg btn-primary btn-block login" id="loginBtn" type="submit">登录
+                                </button>
+                            </form>
+                            <!-- Tab Register -->
+                            <form class="tab-pane fade" id="register" onsubmit="return false;">
+                                <div class="tab-info" id="register-info"></div>
+                                <label for="register-email" class="sr-only">用户名</label>
+                                <input type="text" id="register-email" class="form-control" placeholder="用户名"
+                                       required="required" autofocus="autofocus" name="username"/>
+                                <label for="register-password" class="sr-only">密码</label>
+                                <input type="password" id="register-password" class="form-control" placeholder="密码"
+                                       required="required" name="password"/>
+                                <label for="register-password" class="sr-only">确认密码</label>
+                                <input type="password" id="register-apassword" class="form-control" placeholder="确认密码"
+                                       required="required" name="apassword"/>
+                                <button class="btn btn-lg btn-primary btn-block register" id="registerBtn"
+                                        type="submit">注册
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div th:replace="base :: modal" id="modal">
+
+</div>
+</body>
+</html>

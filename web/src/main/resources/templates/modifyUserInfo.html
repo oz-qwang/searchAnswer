@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <head th:replace="base :: head">
+    </head>
+</head>
+
+<body>
+
+<div class="container basic-container">
+
+    <header class="header" th:replace="base :: header"></header>
+
+    <div class="content">
+        <div class="row">
+            <div th:replace="base :: userNavigator"></div>
+
+            <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-md-pull-4 col-lg-pull-4">
+                <div class="section section-settings">
+                    <h4>基本资料</h4>
+                    <form id="profile" class="profile-basic-form" method="post"
+                          th:action="@{/user/info/modifyBaseInfo}">
+                        <input type="hidden" name="id" th:value="${userInfo==null?null:userInfo.id}"/>
+                        <div class="form-group">
+                            <label for="nickname">昵称</label>
+                            <input type="text" class="form-control" name="nickname" id="nickname"
+                                   th:value="${userInfo==null?null:userInfo.nickname}"/>
+                        </div>
+                        <div class="form-group">
+                            <label>性别</label>
+                            <div>
+                                <div class="btn-group" data-toggle="buttons">
+                                    <label class="btn btn-info active"
+                                           th:class="'btn btn-info '+(${initGenderId}==1?'active':'')">
+                                        <input type="radio" name="genderId" id="male" value="1" autocomplete="off"
+                                               checked="checked"
+                                               th:checked="${initGenderId}==1?true:false"/>男♂
+                                    </label>
+                                    <label class="btn btn-info"
+                                           th:class="'btn btn-info '+(${initGenderId}==2?'active':'')">
+                                        <input type="radio" name="genderId" id="female" value="2" autocomplete="off"
+                                               th:checked="${initGenderId}==2?true:false"/>女♀
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">邮箱地址</label>
+                            <input type="text" class="select form-control" name="email" id="email"
+                                   autocomplete="off" th:value="${userInfo==null?null:userInfo.email}"/>
+                            <!--用来对应school_id,需要连接数据库-->
+                        </div>
+
+                        <div class="form-group">
+                            <label for="description">个人简介</label>
+                            <textarea id="description" class="form-control" name="description"
+                                      maxlength="400" th:text="${userInfo==null?null:userInfo.description}"></textarea>
+                        </div>
+                        <div class="actions">
+                            <button type="submit" name="update" class="btn btn-primary push-right">更新资料</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" id="modal">
+    <div class="modal-dialog modal-sm alert-danger">
+        <div class="modal-content">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                    aria-hidden="true">&times;</span></button>
+            <div class="modal-body">
+                <p>修改成功!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $("#nav-user").addClass('active').siblings().removeClass('active');
+    $('#p-basic').addClass('active');
+</script>
+</body>
+</html>

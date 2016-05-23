@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <head th:replace="base :: head">
+    </head>
+    <script th:src="@{/js/build/handlebars.js}"></script>
+    <script type="text/javascript" th:src="@{/js/func/questionAnser.js}"></script>
+</head>
+<body>
+
+<header class="header" th:replace="base :: header"></header>
+
+<div class="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 questanswer-div">
+                <div class="section">
+                    <h4>问题描述</h4>
+                    <h5 th:text="${questionAnswerInfo.title}"></h5>
+                    <p th:text="${questionAnswerInfo.content}" style="font-size: 14px;"></p>
+                </div>
+                <div class="section course-comment" name="comment">
+                    <h4>回复列表</h4>
+                    <div class="input-group-comment clearfix">
+                        <textarea id="input-comment" placeholder="帮下TA吧~~"></textarea>
+                        <a id="commentAnswer" class="btn btn-primary pull-right comment_course"
+                           th:data="${questionAnswerInfo.questionId}">回复&gt;&lt;</a>
+                    </div>
+                    <ul id="comments">
+                        <li class="item" th:each="answer : ${questionAnswerInfo.answerCommands}">
+                            <div class="row">
+                                <div class="hidden-xs col-sm-1 col-md-1 col-lg-1">
+                                    <div class="item-avatar">
+                                        <div class="box-f">
+                                            <div class="box-s">
+                                                <div class="box-t img-responsive"
+                                                     th:style="'background-image: url('+@{${answer.headerImgPath}}+');'">
+                                                    <div class="overlay">
+                                                        <a href="javascript:;"><span class="glyphicon glyphicon-user"
+                                                                                     aria-hidden="true"></span></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-11 col-md-11 col-lg-11">
+                                    <div class="item-main">
+                                        <div>
+                                            <a class="f-main" href="javascript:;" th:text="${answer.nickname}"></a>
+                                        </div>
+                                        <div class="item-content" th:text="${answer.answer}"></div>
+                                        <div class="pull-right f-12" th:text="${answer.commentDate}"></div>
+                                        <!--<div class="item-actions pull-right">-->
+                                        <!--<a class="like_comment" data-id="932"><span-->
+                                        <!--class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>-->
+                                        <!--1</a>-->
+                                        <!--<a class="dislike_comment" data-id="932"><span-->
+                                        <!--class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span> 0</a>-->
+                                        <!--<a class="collapse_reply" role="button" data-toggle="collapse"-->
+                                        <!--href="#reply-932" aria-expanded="false" aria-controls="reply-932"-->
+                                        <!--data-count="0">回复 0</a>-->
+                                        <!--</div>-->
+                                    </div>
+
+                                </div>
+                            </div>
+                            <!--<div class="collapse" id="reply-932">-->
+                            <!--<div class="item-in">-->
+                            <!--<div id="comment-932-replies">-->
+                            <!--</div>-->
+
+                            <!--<div class="input-group input-group-mc">-->
+                            <!--<input type="text" class="form-control input-reply" placeholder="我也来一句~~"/>-->
+                            <!--<span class="input-group-btn">-->
+                            <!--<a role="button" class="btn btn-primary reply_comment" aria-label="Left Align" data-id="932">回复</a>-->
+                            <!--</span>-->
+                            <!--</div>-->
+                            <!--</div>-->
+                            <!--</div>-->
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<div th:replace="base :: modal" id="modal"></div>
+
+<script>
+    $("#nav-course").addClass('active').siblings().removeClass('active');
+</script>
+
+<script id="questionAnswerTemplate" type="text/x-handlebars-template">
+    <li class="item">
+        <div class="row">
+            <div class="hidden-xs col-sm-1 col-md-1 col-lg-1">
+                <div class="item-avatar">
+                    <div class="box-f">
+                        <div class="box-s">
+                            <div class="box-t img-responsive"
+                                 style="background-image: url(/searchAnswer{{headerImgPath}});">
+                                <div class="overlay">
+                                    <a href="javascript:;"><span class="glyphicon glyphicon-user"
+                                                                 aria-hidden="true"></span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-11 col-md-11 col-lg-11">
+                <div class="item-main">
+                    <div>
+                        <a class="f-main" href="javascript:;">{{nickname}}</a>
+                    </div>
+                    <div class="item-content">{{answer}}</div>
+                    <div class="pull-right f-12">{{commentDate}}</div>
+                </div>
+
+            </div>
+        </div>
+    </li>
+</script>
+
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <head th:replace="base :: head"></head>
+    <script th:src="@{/js/build/handlebars.js}"></script>
+    <script th:src="@{/js/func/questionList.js}"></script>
+</head>
+<body>
+
+
+<div class="container">
+
+    <header class="header" th:replace="base :: header"></header>
+
+    <div class="content">
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 question-div">
+                <div class="section">
+                    <h4>最新动态</h4>
+                    <ul id="water-fall" th:each="question : ${questionList}">
+                        <li class="item" style="opacity: 1;">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-1 col-md-1 col-lg-1">
+                                    <div class="item-avatar">
+                                        <div class="box-f">
+                                            <div class="box-s">
+                                                <div class="box-t img-responsive"
+                                                     th:style="'background-image: url('+@{${question.headerImgPath}}+');'">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-11 col-md-11 col-lg-11">
+                                    <div class="item-main">
+                                        <div class="item-header">
+                                            <a class="f-main f-16" href="/Course/148" target="_blank"
+                                               th:href="@{/question/answer/}+${question.questionId}"
+                                               th:text="${question.title}"></a>
+                                        </div>
+                                        <div class="item-subheader">
+                                        </div>
+                                        <div class="item-content" th:text="${question.content}">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <a id="loadMore" class="btn btn-primary questionlist-more-button" href="javascript:;"
+                       th:if="${hasMore==true}" th:data="${nextPageNum}" th:value="${searchTitle}">加载更多...<span class="badge"></span></a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<script>
+    $('#nav-course').addClass('active');
+</script>
+
+<script id="questionTemplate" type="text/x-handlebars-template">
+    {{#each questionList}}
+    <li class="item" style="opacity: 1;">
+        <div class="row">
+            <div class="col-xs-12 col-sm-1 col-md-1 col-lg-1">
+                <div class="item-avatar">
+                    <div class="box-f">
+                        <div class="box-s">
+                            <div class="box-t img-responsive"
+                                 style="background-image: url(/searchAnswer{{headerImgPath}});">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-11 col-md-11 col-lg-11">
+                <div class="item-main">
+                    <div class="item-header">
+                        <a class="f-main f-16" href="/Course/148" target="_blank"
+                        >{{title}}</a>
+                    </div>
+                    <div class="item-subheader">
+                    </div>
+                    <div class="item-content">
+                        {{content}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    {{/each}}
+</script>
+
+
+</body>
+</html>

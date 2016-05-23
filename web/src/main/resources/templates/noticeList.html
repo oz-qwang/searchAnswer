@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <head th:replace="base :: head">
+    </head>
+    <link th:href="@{/css/uploadify.css}" type="text/css" rel="stylesheet"/>
+    <script type="text/javascript" th:src="@{/js/build/jquery.uploadify-3.1.js}"></script>
+    <script type="text/javascript" th:src="@{/js/func/modifyUserHeader.js}"></script>
+</head>
+<body>
+
+<div class="container">
+
+    <header class="header" th:replace="base :: header"></header>
+
+    <div class="content">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-md-pull-4 col-lg-pull-4 pull-right noticeList-div">
+                <div class="section notice-body">
+                    <h4>所有公告</h4>
+                    <ul class="tab-pane fade in active" id="all" href="#all">
+                        <li class="item" th:each="notice : ${noticeList}">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <div class="item-top-line">
+                                        <mark class="f-14" th:text='${#dates.format(notice.createDate,"yyyy.MM-dd HH:mm:ss")}'></mark>
+                                    </div>
+                                </div>
+                                <div class="col-md-10">
+                                    <div class="item-title item-top-line">
+                                        <a class="f-main a-title" href="javascript:;" data-toggle="modal"
+                                           data-target="#modal-notice" data-id="21" th:text="${notice.title}"></a>
+                                    </div>
+                                    <blockquote class="announcement-content">
+                                        <div class="f-light f-14" th:text="${notice.content}"></div>
+                                    </blockquote>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    $("#nav-notice").addClass('active');
+</script>
+
+</body>
+</html>

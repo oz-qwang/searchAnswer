@@ -1,0 +1,60 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        maven { url 'http://repo.spring.io/release' }
+        maven { url 'http://repo.spring.io/milestone' }
+        maven { url 'http://repo.spring.io/snapshot' }
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:$springBootVersion")
+    }
+}
+
+apply plugin: 'spring-boot'
+apply plugin: 'war'
+
+bootRun {
+    systemProperties = System.properties
+    addResources = true
+}
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-web:$springBootVersion")
+    compile("org.springframework.boot:spring-boot-devtools:$springBootVersion")
+    compile("org.springframework.boot:spring-boot-starter-data-jpa:$springBootVersion")
+    compile("org.springframework.boot:spring-boot-starter-jdbc:$springBootVersion")
+    compile("org.hibernate:hibernate-entitymanager") {
+        exclude module: 'org.jboss.spec.javax.transaction:jboss-transaction-api_1.2_spec'
+    }
+    compile('javax.transaction:javax.transaction-api')
+    compile('org.springframework.data:spring-data-jpa') {
+        exclude module: 'org.aspectj:aspectjrt'
+    }
+    compile('org.springframework:spring-aspects')
+    compile('mysql:mysql-connector-java')
+    compile('org.springframework.boot:spring-boot-starter-thymeleaf')
+
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+}
+
+//install {
+//    repositories.mavenInstaller {
+//        pom.project {
+//            parent {
+//                groupId 'org.springframework.boot'
+//                artifactId 'spring-boot-starter-parent'
+//                version '$springBootVersion'
+//            }
+//        }
+//    }
+//}
+//
+//jar {
+//    baseName = 'wxy-searchanswer-web'
+//    sourceCompatibility = $jdkVersion
+//    version = project.version
+//    manifest {
+//        attributes 'Main-Class': 'com.wxy.serachanswer.Application'
+//    }
+//}

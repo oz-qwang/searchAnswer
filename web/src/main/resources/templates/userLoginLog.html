@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <head th:replace="base :: head">
+    </head>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap-table.css}"/>
+    <script th:src="@{/js/build/bootstrap-table.js}"></script>
+    <script th:src="@{/js/func/userLoginLog.js}"></script>
+</head>
+
+<body>
+
+<div class="container basic-container">
+
+    <header class="header" th:replace="base :: header"></header>
+
+    <div class="content">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-md-pull-4 col-lg-pull-4 publish-div"></div>
+            <table data-toggle="userLoginLogTable" data-url="listaaa"
+                   data-query-params="queryParams"
+                   data-pagination="true"
+                   data-search="true"
+                   data-height="300">
+                <tr>
+                    <th data-field="username">用户名</th>
+                    <th data-field="nickname">昵称</th>
+                    <th data-field="loginDateTime">登录时间</th>
+                </tr>
+
+            </table>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    $("#nav-user").addClass('active').siblings().removeClass('active');
+</script>
+</body>
+</html>

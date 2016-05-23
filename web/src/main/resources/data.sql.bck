@@ -1,0 +1,5 @@
+INSERT INTO gender (value) VALUES ('男'), ('女');
+
+INSERT INTO role (id,role_name, description) VALUES (1,'administrator', '管理员'), (2,'ordinaryUser', '普通用员');
+
+INSERT INTO user (password, username,  role_id) VALUES ('admin', 'admin', 1);
