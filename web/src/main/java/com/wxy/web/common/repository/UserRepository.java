@@ -8,10 +8,10 @@ import com.wxy.web.common.domain.User;
 
 
 /**
- * Created by qiuwang on 5/12/16.
+ * Created by xinyu wei on 5/12/16.
  *
- * @author   <a href="mailto:qiu.wang@ozstrategy.com">Qiu Wang</a>
- * @version  05/12/2016 02:04
+ * @author   <a href="564629989@qq.com">XinYu Wei</a>
+ * @version  04/12/2016 02:04
  */
 public interface UserRepository extends JpaRepository<User, Long> {
   //~ Methods ----------------------------------------------------------------------------------------------------------

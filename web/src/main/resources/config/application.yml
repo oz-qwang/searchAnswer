@@ -18,7 +18,11 @@ spring:
              serialization:
                       indent_output: true
       driver-class-name: com.mysql.jdbc.Driver
-
+      resources:
+              static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/
 server:
       port: 8010
       context-path: /searchAnswer
+
+custom:
+      uploadpath: /Users/xinyu wei/project/SearchAnswer/build

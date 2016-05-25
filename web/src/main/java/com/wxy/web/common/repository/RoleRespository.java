@@ -6,9 +6,9 @@ import com.wxy.web.common.domain.code.Role;
 
 
 /**
- * Created by qiuwang on 5/17/16.
+ * Created by xinyu wei on 5/17/16.
  *
- * @author   <a href="mailto:qiu.wang@ozstrategy.com">Qiu Wang</a>
- * @version  05/17/2016 23:52
+ * @author   <a href="564629989@qq.com">XinYu Wei</a>
+ * @version  04/17/2016 23:52
  */
 public interface RoleRespository extends JpaRepository<Role, Long> { }

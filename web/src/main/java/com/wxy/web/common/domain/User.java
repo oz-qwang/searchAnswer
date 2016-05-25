@@ -12,7 +12,7 @@ import com.wxy.web.common.domain.code.Role;
 /**
  * TODO: DOCUMENT ME!
  *
- * @author   <a href="mailto:qiu.wang@ozstrategy.com">Qiu Wang</a>
+ * @author   <a href="564629989@qq.com">XinYu Wei</a>
  * @version  04/21/2016 10:29
  */
 @Entity

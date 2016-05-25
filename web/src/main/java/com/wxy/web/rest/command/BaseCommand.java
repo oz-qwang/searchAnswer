@@ -6,10 +6,10 @@ import java.util.Map;
 
 
 /**
- * Created by qiuwang on 5/12/16.
+ * Created by xinyu wei on 5/12/16.
  *
- * @author   <a href="mailto:qiu.wang@ozstrategy.com">Qiu Wang</a>
- * @version  05/12/2016 00:56
+ * @author   <a href="564629989@qq.com">XinYu Wei</a>
+ * @version  04/12/2016 00:56
  */
 public class BaseCommand {
   //~ Instance fields --------------------------------------------------------------------------------------------------
