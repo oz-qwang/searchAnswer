@@ -12,7 +12,6 @@ buildscript {
 }
 
 apply plugin: 'spring-boot'
-apply plugin: 'war'
 
 bootRun {
     systemProperties = System.properties

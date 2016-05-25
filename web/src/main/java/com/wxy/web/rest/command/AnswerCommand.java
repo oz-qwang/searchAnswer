@@ -4,10 +4,10 @@ import java.util.Date;
 
 
 /**
- * Created by qiuwang on 5/22/16.
+ * Created by xinyu wei on 5/22/16.
  *
- * @author   <a href="mailto:qiu.wang@ozstrategy.com">Qiu Wang</a>
- * @version  05/22/2016 21:08
+ * @author   <a href="564629989@qq.com">XinYu Wei</a>
+ * @version  04/22/2016 21:08
  */
 public class AnswerCommand {
   //~ Instance fields --------------------------------------------------------------------------------------------------

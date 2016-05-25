@@ -8,7 +8,7 @@ import javax.persistence.*;
 /**
  * TODO: DOCUMENT ME!
  *
- * @author   <a href="mailto:qiu.wang@ozstrategy.com">Qiu Wang</a>
+ * @author   <a href="564629989@qq.com">XinYu Wei</a>
  * @version  04/21/2016 10:30
  */
 @MappedSuperclass public class baseDomain {

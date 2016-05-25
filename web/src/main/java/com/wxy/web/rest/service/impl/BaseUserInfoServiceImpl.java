@@ -15,10 +15,10 @@ import com.wxy.web.rest.service.BaseUserInfoService;
 
 
 /**
- * Created by qiuwang on 5/20/16.
+ * Created by xinyu wei on 5/20/16.
  *
- * @author   <a href="mailto:qiu.wang@ozstrategy.com">Qiu Wang</a>
- * @version  05/20/2016 01:10
+ * @author   <a href="564629989@qq.com">XinYu Wei</a>
+ * @version  04/20/2016 01:10
  */
 @Service public class BaseUserInfoServiceImpl implements BaseUserInfoService {
   //~ Instance fields --------------------------------------------------------------------------------------------------

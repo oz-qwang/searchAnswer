@@ -7,10 +7,10 @@ import com.wxy.web.common.domain.User;
 
 
 /**
- * Created by qiuwang on 5/23/16.
+ * Created by xinyu wei on 5/23/16.
  *
- * @author   <a href="mailto:qiu.wang@ozstrategy.com">Qiu Wang</a>
- * @version  05/23/2016 00:05
+ * @author   <a href="564629989@qq.com">XinYu Wei</a>
+ * @version  04/23/2016 00:05
  */
 public interface NoticeService {
   //~ Methods ----------------------------------------------------------------------------------------------------------

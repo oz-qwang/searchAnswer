@@ -35,10 +35,10 @@ import com.wxy.web.rest.service.UserService;
 
 
 /**
- * Created by qiuwang on 5/18/16.
+ * Created by xinyu wei on 5/18/16.
  *
- * @author   <a href="mailto:qiu.wang@ozstrategy.com">Qiu Wang</a>
- * @version  05/18/2016 01:12
+ * @author   <a href="564629989@qq.com">XinYu Wei</a>
+ * @version  04/18/2016 01:12
  */
 @Controller
 @RequestMapping("/question")

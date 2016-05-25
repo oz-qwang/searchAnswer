@@ -12,9 +12,9 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 
 /**
- * Created by qiuwang on 5/15/16.
+ * Created by xinyu wei on 5/15/16.
  *
- * @author <a href="mailto:qiu.wang@ozstrategy.com">Qiu Wang</a>
+ * @author <a href="564629989@qq.com">XinYu Wei</a>
  * @version 05/15/2016 03:32
  */
 public class LoginInterceptor extends HandlerInterceptorAdapter {

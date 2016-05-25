@@ -1,33 +1,64 @@
-package com.wxy.web.common.domain;
+package com.wxy.web.rest.command;
 
-import javax.persistence.*;
+import java.util.Objects;
 
-import com.wxy.web.common.domain.code.Gender;
+import org.springframework.util.StringUtils;
+
+import com.wxy.web.common.domain.BaseUserInfo;
+import com.wxy.web.common.domain.User;
 
 
 /**
- * Created by xinyu wei on 5/13/16.
+ * Created by xinyu wei on 5/26/16.
  *
- * @author   <a href="564629989@qq.com">XinYu Wei</a>
- * @version  04/13/2016 01:20
+ * @author   <a href="mailto:564629989@qq.com">XinYu Wei</a>
+ * @version  04/26/2016 00:14
  */
-@Entity public class BaseUserInfo extends baseDomain {
+public class UserInfoCommand {
   //~ Instance fields --------------------------------------------------------------------------------------------------
 
-  @Column private String description;
+  private String description = "未填写";
+  private String email       = "未填写";
+  private String gender      = "未填写";
+  private String nickname    = "未填写";
 
-  @Column private String email;
+  private String username;
 
-  @JoinColumn(name = "genderId")
-  @ManyToOne private Gender gender;
-  @Column private String    headerImgPath;
+  //~ Constructors -----------------------------------------------------------------------------------------------------
 
-// @Column private String name;
+  /**
+   * Creates a new UserInfoCommand object.
+   */
+  public UserInfoCommand() { }
 
-  @Column private String nickname;
+  /**
+   * Creates a new UserInfoCommand object.
+   *
+   * @param  user  baseUserInfo BaseUserInfo
+   */
+  public UserInfoCommand(User user) {
+    BaseUserInfo baseUserInfo = user.getBaseUserInfo();
+    this.username = user.getUsername();
 
-  @JoinColumn(name = "userId")
-  @OneToOne private User user;
+    if (Objects.nonNull(baseUserInfo)) {
+      if (!StringUtils.isEmpty(baseUserInfo.getNickname())) {
+        this.nickname = baseUserInfo.getNickname();
+      }
+
+      if (!StringUtils.isEmpty(baseUserInfo.getEmail())) {
+        this.email = baseUserInfo.getEmail();
+      }
+
+      if (!StringUtils.isEmpty(baseUserInfo.getDescription())) {
+        this.description = baseUserInfo.getDescription();
+      }
+
+      if (Objects.nonNull(baseUserInfo.getGender())) {
+        this.gender = baseUserInfo.getGender().getValue();
+      }
+
+    }
+  }
 
   //~ Methods ----------------------------------------------------------------------------------------------------------
 
@@ -56,21 +87,10 @@ import com.wxy.web.common.domain.code.Gender;
   /**
    * getter method for gender.
    *
-   * @return  Gender
-   */
-  public Gender getGender() {
-    return gender;
-  }
-
-  //~ ------------------------------------------------------------------------------------------------------------------
-
-  /**
-   * getter method for header img path.
-   *
    * @return  String
    */
-  public String getHeaderImgPath() {
-    return headerImgPath;
+  public String getGender() {
+    return gender;
   }
 
   //~ ------------------------------------------------------------------------------------------------------------------
@@ -87,12 +107,12 @@ import com.wxy.web.common.domain.code.Gender;
   //~ ------------------------------------------------------------------------------------------------------------------
 
   /**
-   * getter method for user.
+   * getter method for username.
    *
-   * @return  User
+   * @return  String
    */
-  public User getUser() {
-    return user;
+  public String getUsername() {
+    return username;
   }
 
   //~ ------------------------------------------------------------------------------------------------------------------
@@ -122,21 +142,10 @@ import com.wxy.web.common.domain.code.Gender;
   /**
    * setter method for gender.
    *
-   * @param  gender  Gender
+   * @param  gender  String
    */
-  public void setGender(Gender gender) {
+  public void setGender(String gender) {
     this.gender = gender;
-  }
-
-  //~ ------------------------------------------------------------------------------------------------------------------
-
-  /**
-   * setter method for header img path.
-   *
-   * @param  headerImgPath  String
-   */
-  public void setHeaderImgPath(String headerImgPath) {
-    this.headerImgPath = headerImgPath;
   }
 
   //~ ------------------------------------------------------------------------------------------------------------------
@@ -153,11 +162,11 @@ import com.wxy.web.common.domain.code.Gender;
   //~ ------------------------------------------------------------------------------------------------------------------
 
   /**
-   * setter method for user.
+   * setter method for username.
    *
-   * @param  user  User
+   * @param  username  String
    */
-  public void setUser(User user) {
-    this.user = user;
+  public void setUsername(String username) {
+    this.username = username;
   }
-} // end class BaseUserInfo
+} // end class UserInfoCommand

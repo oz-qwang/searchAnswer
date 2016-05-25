@@ -25,8 +25,8 @@ import com.wxy.web.rest.service.UserService;
 /**
  * TODO: DOCUMENT ME!
  *
- * @author   <a href="mailto:qiu.wang@ozstrategy.com">Qiu Wang</a>
- * @version  05/12/2016 00:03
+ * @author   <a href="564629989@qq.com">XinYu Wei</a>
+ * @version  04/12/2016 00:03
  */
 @RequestMapping @RestController public class LoginController {
   //~ Instance fields --------------------------------------------------------------------------------------------------

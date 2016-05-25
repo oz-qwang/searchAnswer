@@ -1,10 +1,10 @@
 package com.wxy.web.rest.command;
 
 /**
- * Created by qiuwang on 5/22/16.
+ * Created by xinyu wei on 5/22/16.
  *
- * @author   <a href="mailto:qiu.wang@ozstrategy.com">Qiu Wang</a>
- * @version  05/22/2016 16:48
+ * @author   <a href="564629989@qq.com">XinYu Wei</a>
+ * @version  04/22/2016 16:48
  */
 public class QuestionCommand {
   //~ Instance fields --------------------------------------------------------------------------------------------------

@@ -9,6 +9,8 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.core.env.Environment;
+
 import org.springframework.stereotype.Controller;
 
 import org.springframework.ui.Model;
@@ -24,24 +26,27 @@ import org.springframework.web.multipart.MultipartFile;
 import com.wxy.web.common.domain.BaseUserInfo;
 import com.wxy.web.common.domain.User;
 import com.wxy.web.rest.command.BaseCommand;
+import com.wxy.web.rest.command.UserInfoCommand;
 import com.wxy.web.rest.service.BaseUserInfoService;
 import com.wxy.web.rest.service.UserService;
 
 
 /**
- * Created by qiuwang on 5/19/16.
+ * Created by xinyu wei on 5/19/16.
  *
- * @author   <a href="mailto:qiu.wang@ozstrategy.com">Qiu Wang</a>
- * @version  05/19/2016 00:57
+ * @author   <a href="564629989@qq.com">XinYu Wei</a>
+ * @version  04/19/2016 00:57
  */
 @Controller
 @RequestMapping("/user/info")
 public class UserController {
   //~ Instance fields --------------------------------------------------------------------------------------------------
 
-  @Autowired private BaseUserInfoService baseUserInfoService;
-
   /** goUserMainPage. */
+
+  @Autowired Environment environment;
+
+  @Autowired private BaseUserInfoService baseUserInfoService;
 
 
   @Autowired private UserService userService;
@@ -85,19 +90,11 @@ public class UserController {
    * @return  String
    */
   @RequestMapping(
-    path   = "/moidfyHeader",
+    value  = "/moidfyHeader",
     method = RequestMethod.GET
   )
   public String goModifyUserMoidfyHeader(HttpSession session, Model model) {
-    User         loginedUser    = userService.findById(((User) session.getAttribute("user")).getId());
-    BaseUserInfo baseUserInfo   = loginedUser.getBaseUserInfo();
-    String       userHeaderPath = null;
-
-    if (Objects.nonNull(baseUserInfo)) {
-      userHeaderPath = baseUserInfo.getHeaderImgPath();
-    }
-
-    model.addAttribute("userHeaderPath", userHeaderPath);
+    model.addAttribute("userHeaderPath", getUserHeaderPath(session));
 
     return "modifyUserHeader";
   }
@@ -136,10 +133,19 @@ public class UserController {
   /**
    * goUserMainPage.
    *
+   * @param   model    Model
+   * @param   session  HttpSession
+   *
    * @return  ModelAndView
    */
   @RequestMapping("/userMain")
-  public String goUserMainPage() {
+  public String goUserMainPage(Model model, HttpSession session) {
+    User user = userService.findById(((User) session.getAttribute("user")).getId());
+
+    model.addAttribute("userInfo", new UserInfoCommand(user));
+
+    model.addAttribute("userHeaderPath", getUserHeaderPath(session));
+
     return "userMain";
   }
 
@@ -186,7 +192,7 @@ public class UserController {
       required = false
     ) MultipartFile file) throws IOException {
     byte[] bytes     = file.getBytes();
-    String uploadDir = "/Users/qiuwang/project/SearchAnswer/web/src/main/resources/static/upload";
+    String uploadDir = environment.getProperty("custom.uploadpath");
     File   dirPath   = new File(uploadDir);
 
     if (!dirPath.exists()) {
@@ -194,8 +200,6 @@ public class UserController {
     }
 
     String sep          = System.getProperty("file.separator");
-    String s            = uploadDir + sep
-      + file.getOriginalFilename();
     File   uploadedFile = new File(uploadDir + sep
         + file.getOriginalFilename());
     FileCopyUtils.copy(bytes, uploadedFile);
@@ -253,5 +257,17 @@ public class UserController {
     return new BaseCommand(message, success);
   }
 
+  //~ ------------------------------------------------------------------------------------------------------------------
 
+  private String getUserHeaderPath(HttpSession session) {
+    User         loginedUser    = userService.findById(((User) session.getAttribute("user")).getId());
+    BaseUserInfo baseUserInfo   = loginedUser.getBaseUserInfo();
+    String       userHeaderPath = null;
+
+    if (Objects.nonNull(baseUserInfo)) {
+      userHeaderPath = baseUserInfo.getHeaderImgPath();
+    }
+
+    return userHeaderPath;
+  }
 } // end class UserController
