@@ -15,10 +15,10 @@ import com.wxy.web.rest.service.UserService;
 
 
 /**
- * Created by qiuwang on 5/17/16.
+ * Created by xinyu wei on 5/17/16.
  *
- * @author   <a href="mailto:qiu.wang@ozstrategy.com">Qiu Wang</a>
- * @version  05/17/2016 23:53
+ * @author   <a href="564629989@qq.com">XinYu Wei</a>
+ * @version  04/17/2016 23:53
  */
 @Service public class UserServiceImpl implements UserService {
   //~ Instance fields --------------------------------------------------------------------------------------------------

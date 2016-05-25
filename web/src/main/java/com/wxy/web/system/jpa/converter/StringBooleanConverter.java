@@ -6,8 +6,8 @@ import javax.persistence.AttributeConverter;
 /**
  * TODO: DOCUMENT ME!
  *
- * @author   <a href="mailto:qiu.wang@ozstrategy.com">Qiu Wang</a>
- * @version  05/15/2016 01:35
+ * @author   <a href="564629989@qq.com">XinYu Wei</a>
+ * @version  04/15/2016 01:35
  */
 public class StringBooleanConverter implements AttributeConverter<Boolean, String> {
   //~ Methods ----------------------------------------------------------------------------------------------------------

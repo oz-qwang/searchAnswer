@@ -7,10 +7,10 @@ import javax.persistence.ManyToOne;
 
 
 /**
- * Created by qiuwang on 5/15/16.
+ * Created by xinyu wei on 5/15/16.
  *
- * @author   <a href="mailto:qiu.wang@ozstrategy.com">Qiu Wang</a>
- * @version  05/15/2016 02:02
+ * @author   <a href="564629989@qq.com">XinYu Wei</a>
+ * @version  04/15/2016 02:02
  */
 @Entity public class QuestionAnswerDetail extends baseDomain {
   //~ Instance fields --------------------------------------------------------------------------------------------------

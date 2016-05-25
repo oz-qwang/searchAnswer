@@ -1,10 +1,10 @@
 package com.wxy.web.rest.command;
 
 /**
- * Created by qiuwang on 5/24/16.
+ * Created by xinyu wei on 5/24/16.
  *
- * @author   <a href="mailto:qiu.wang@ozstrategy.com">Qiu Wang</a>
- * @version  05/24/2016 00:33
+ * @author   <a href="564629989@qq.com">XinYu Wei</a>
+ * @version  04/24/2016 00:33
  */
 public class UserLoginLogCommand {
   //~ Instance fields --------------------------------------------------------------------------------------------------

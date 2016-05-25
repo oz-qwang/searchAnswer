@@ -7,8 +7,8 @@ import com.wxy.web.common.domain.User;
 /**
  * TODO: DOCUMENT ME!
  *
- * @author   <a href="mailto:qiu.wang@ozstrategy.com">Qiu Wang</a>
- * @version  05/20/2016 01:09
+ * @author   <a href="564629989@qq.com">XinYu Wei</a>
+ * @version  04/20/2016 01:09
  */
 public interface BaseUserInfoService {
   //~ Methods ----------------------------------------------------------------------------------------------------------
