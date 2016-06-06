@@ -164,8 +164,14 @@ public class UserController {
     path   = "/modifyBaseInfo",
     method = RequestMethod.POST
   )
-  public String modifyUserInfo(HttpSession session, BaseUserInfo baseUserInfo, Long genderId) {
+  public String modifyUserInfo(HttpSession session, BaseUserInfo baseUserInfo, Long genderId,Model model) {
     baseUserInfoService.saveOrUpdateBaseUserInfo((User) session.getAttribute("user"), baseUserInfo, genderId);
+
+    User user = userService.findById(((User) session.getAttribute("user")).getId());
+
+    model.addAttribute("userInfo", new UserInfoCommand(user));
+
+    model.addAttribute("userHeaderPath", getUserHeaderPath(session));
 
     return "userMain";
   }
